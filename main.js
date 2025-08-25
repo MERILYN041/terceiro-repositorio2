@@ -46,7 +46,7 @@ function geraSenha() {
     if (checkbox[3].checked){
         alfabeto = alfabeto + simbolos;
     }
-
+    
     let senha = '' ;
     for(let i=0; i < tamanhoSenha; i++) {
         let numeroAleatorio = Math.random()*alfabeto.length;
@@ -54,21 +54,20 @@ function geraSenha() {
         senha = senha + alfabeto[numeroAleatorio];
     }
     campoSenha.value = senha;
-    classificaSenha(alfabeto.length); 
+    classificaSenha(alfabeto.length);
 }
 
 function classificaSenha(tamanhoAlfabeto) {
     let entropia = tamanhoSenha*Math.log2(tamanhoAlfabeto);
     console.log(entropia);
     forcaSenha.classList.remove('fraca', 'media', 'forte');
-    if (entropia >57);
-    if (tamanhoSenha>11){
+    if (entropia > 57){
         forcaSenha.classList.add('forte');
-    } else if (tamanhoSenha> 35 && tamanhoSenha < 57) {
+    } else if (entropia > 35 && entropia < 57) {
         forcaSenha.classList.add('media');
-    } else if (tamanhoSenha<= 35){
+    } else if (entropia <= 35){
         forcaSenha.classList.add('fraca');
     }
-     const valorEntropia = document.querySelector('.entropia');
+    const valorEntropia = document.querySelector('.entropia');
     valorEntropia.textContent = 2**Math.floor(entropia)/(100e6*60*60*24);
 }
